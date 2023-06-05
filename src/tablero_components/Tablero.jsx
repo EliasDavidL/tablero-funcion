@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 
 import Equipo from './Equipo';
 
 import Arg from "../img/arg.svg";
 import Usa from "../img/usa.svg";
-
+/* 
 class Tablero extends Component {
   constructor(props) {
     super(props);
@@ -14,120 +14,99 @@ class Tablero extends Component {
     }
   }
 
-  /* Cree sus funciones aquí abajo */
+  Cree sus funciones aquí abajo */
 
-  incLocalUno = () => {
-    this.setState({
-      local: this.state.local + 1
-    })
-  }
+  function Tablero() {
 
-  incLocalDos = () => {
-    this.setState({
-      local: this.state.local + 2
-    })
-  }
+    const [local,setLocal]=useState(0)
+    const [visitante, setVisitante]=useState(0)
+    const incLocalUno = () => { 
+      setLocal(local + 1)
+    }
+  
+    const incLocalDos = () => {
+       setLocal(local + 2)
+    }
 
-  incLocalTres = () => {
-    this.setState({
-      local: this.state.local + 3
-    })
-  }
+    const incLocalTres = () => {     
+      setLocal(local + 3)
+    }
+  
+    const decLocalUno = () => {    
+      setLocal(local - 1)
+    }
+  
+    const decLocalDos = () => {
+           setLocal(local - 1)
+    }
+  
+    const decLocalTres = () => {
+      setLocal(local - 3)
+    }
+  
+    const incVisitaUno = () => {
+      setVisitante(visitante + 1)
+    }
+  
+    const incVisitaDos = () => {
+      setVisitante(visitante + 2)
+    }
+  
+    const incVisitaTres = () => {
+      setVisitante(visitante + 3)
+    }
+  
+    const decVisitaUno = () => {
+      setVisitante(visitante - 1)
+    }
+  
+    const decVisitaDos = () => {
+      setVisitante(visitante -2)
+    }
+  
+    const decVisitaTres = () => {
+      setVisitante(visitante - 3)
+    }
+  
+    const reiniciar = () => {
+      setLocal(0)
+      setVisitante(0)
+    }
 
-  decLocalUno = () => {
-    this.setState({
-      local: this.state.local - 1
-    })
-  }
-
-  decLocalDos = () => {
-    this.setState({
-      local: this.state.local - 2
-    })
-  }
-
-  decLocalTres = () => {
-    this.setState({
-      local: this.state.local - 3
-    })
-  }
-
-  incVisitaUno = () => {
-    this.setState({
-      visitante: this.state.visitante + 1
-    })
-  }
-
-  incVisitaDos = () => {
-    this.setState({
-      visitante: this.state.visitante + 2
-    })
-  }
-
-  incVisitaTres = () => {
-    this.setState({
-      visitante: this.state.visitante + 3
-    })
-  }
-
-  decVisitaUno = () => {
-    this.setState({
-      visitante: this.state.visitante - 1
-    })
-  }
-
-  decVisitaDos = () => {
-    this.setState({
-      visitante: this.state.visitante - 2
-    })
-  }
-
-  decVisitaTres = () => {
-    this.setState({
-      visitante: this.state.visitante - 3
-    })
-  }
-
-  reiniciar = () => {
-    this.setState({
-      local: 0,
-      visitante: 0
-    })
-  }
-
-  render () {
     return (
       <>
-        <h4>{this.props.children}</h4>
+        {/*<h4>{this.props.children}</h4>*/}
+        {/*no se de donde viene clildren??*/}
         <div className='tablero_grupo'>
           <div className='contenedor_local'>
             {/* Inyección de componente */}
-            <Equipo title="Local: " contador={ this.state.local } bandera={ Arg } />
+            <Equipo title="Local: " contador={ local } bandera={ Arg } />
 
-            <button className='btn_inc' onClick={ this.incLocalUno }>+ 1</button>
-            <button className='btn_inc' onClick={ this.incLocalDos }>+ 2</button>
-            <button className='btn_inc' onClick={ this.incLocalTres }>+ 3</button>
-            <button className='btn_dec' onClick={ this.decLocalUno}>- 1</button>
-            <button className='btn_dec' onClick={ this.decLocalDos}>- 2</button>
-            <button className='btn_dec' onClick={ this.decLocalTres}>- 3</button>
+            <button className='btn_inc' onClick={incLocalUno }>+ 1</button>
+            <button className='btn_inc' onClick={ incLocalDos }>+ 2</button>
+            <button className='btn_inc' onClick={ incLocalTres }>+ 3</button>
+            <button className='btn_dec' onClick={ decLocalUno}>- 1</button>
+            <button className='btn_dec' onClick={ decLocalDos}>- 2</button>
+            <button className='btn_dec' onClick={ decLocalTres}>- 3</button>
           </div>
           <div className='contenedor_visitante'>
             {/* Inyección de componente */}
-            <Equipo title="Visitante: " contador={ this.state.visitante } bandera={ Usa } />
+            <Equipo title="Visitante: " contador={ visitante } bandera={ Usa } />
 
-            <button className='btn_inc' onClick={ this.incVisitaUno}>+ 1</button>
-            <button className='btn_inc' onClick={ this.incVisitaDos}>+ 2</button>
-            <button className='btn_inc' onClick={ this.incVisitaTres}>+ 3</button>
-            <button className='btn_dec' onClick={ this.decVisitaUno}>- 1</button>
-            <button className='btn_dec' onClick={ this.decVisitaDos}>- 2</button>
-            <button className='btn_dec' onClick={ this.decVisitaTres}>- 3</button>
+            <button className='btn_inc' onClick={ incVisitaUno}>+ 1</button>
+            <button className='btn_inc' onClick={ incVisitaDos}>+ 2</button>
+            <button className='btn_inc' onClick={ incVisitaTres}>+ 3</button>
+            <button className='btn_dec' onClick={ decVisitaUno}>- 1</button>
+            <button className='btn_dec' onClick={ decVisitaDos}>- 2</button>
+            <button className='btn_dec' onClick={ decVisitaTres}>- 3</button>
 
           </div>
         </div>
-        <button onClick={ this.reiniciar }>Reiniciar tablero</button>
+        <button onClick={ reiniciar }>Reiniciar tablero</button>
       </>
     )
+
+    
   }
-}
 
 export default Tablero;
